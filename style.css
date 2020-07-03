@@ -1,28 +1,145 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
 body {
+  line-height: 1;
   font-family: "Roboto", sans-serif;
 }
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
-.content {
-  width: 100%;
+* {
+  /*border: 1px solid black;*/
+  margin: 0;
+}
+
+::placeholder {
+  font-size: 1.1em;
+}
+
+.container {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+/* Setup */
+
+.setup-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin: auto;
   justify-content: center;
 }
 
-#form-container {
+.setup-container .player-container,
+.setup-container .team-container {
+  margin: 2vh 10vh;
 }
 
-#team-container {
+.setup-container input {
+  padding: 0.2em;
+}
+
+.setup-container h2 {
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+/* Player */
+
+.player-container {
+  text-align: center;
+}
+
+.player {
+  margin-bottom: 0.5em;
+}
+
+.removeIcon {
+  position: relative;
+  top: 5px;
+}
+
+.skill-container {
+  margin-bottom: 1em;
+}
+
+.skill {
+  padding: 0.5em;
+}
+
+/* Teams */
+
+.team-container {
+  text-align: center;
+}
+
+.teams {
+  margin-bottom: 1em;
+}
+
+/* Buttons */
+
+.addButton {
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+
+.button {
+  border-radius: 0.2em;
+  background-color: rgb(250, 128, 114);
+  padding: 0.5em;
 }
 
 .shadow {
-  box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition-duration: 0.4s;
 }
 
-.card {
-  height: 200px;
-  width: 100px;
-  border-radius: 5px;
+.shadow:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.start {
+  font-size: 1.3em;
 }
