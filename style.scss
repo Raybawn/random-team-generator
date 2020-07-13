@@ -1,4 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+$primary-color: rgb(191, 255, 0);
+$transition: ease-in-out 0.4s;
+$shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+$hover-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.5);
+$font-color-dark: #eee;
+$btn-font-color-dark: rgb(25, 25, 27);
+$background-color-dark: rgb(25, 25, 27);
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +16,6 @@
   font: inherit;
   vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -22,24 +30,20 @@ nav,
 section {
   display: block;
 }
-
 body {
   line-height: 1;
   font-family: "Roboto", sans-serif;
-  color: #eee;
-  background-color: #19191b;
+  color: $font-color-dark;
+  background-color: $background-color-dark;
 }
-
 ol,
 ul {
   list-style: none;
 }
-
 blockquote,
 q {
   quotes: none;
 }
-
 blockquote:before,
 blockquote:after,
 q:before,
@@ -47,7 +51,6 @@ q:after {
   content: "";
   content: none;
 }
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -58,7 +61,7 @@ ul {
 }
 
 ::placeholder {
-  color: #eee;
+  color: $font-color-dark;
 }
 
 .content {
@@ -68,6 +71,7 @@ ul {
 }
 
 /* Setup */
+
 .setup-container {
   display: flex;
   flex-flow: row wrap;
@@ -83,9 +87,9 @@ ul {
 
 .setup-container input {
   padding: 0.2em;
-  background-color: #19191b;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-  color: #eee;
+  background-color: $background-color-dark;
+  box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.3);
+  color: $font-color-dark;
   margin-right: 6px;
 }
 
@@ -95,6 +99,7 @@ ul {
 }
 
 /* Player */
+
 .player {
   margin-bottom: 0.5em;
 }
@@ -109,6 +114,7 @@ ul {
 }
 
 /* Buttons */
+
 .addButton {
   margin-top: 1em;
   font-size: 1.2em;
@@ -116,19 +122,19 @@ ul {
 
 .button {
   border-radius: 0.2em;
-  background-color: #bfff00;
+  background-color: $primary-color;
   padding: 0.5em;
-  transition: ease-in-out 0.4s;
-  color: #19191b;
+  transition: $transition;
+  color: $btn-font-color-dark;
 }
 
 .button:hover {
   cursor: pointer;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: $hover-shadow;
 }
 
 .shadow {
-  transition: ease-in-out 0.4s;
+  transition: $transition;
 }
 
 .start {

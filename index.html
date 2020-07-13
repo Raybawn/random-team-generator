@@ -11,82 +11,39 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="content">
       <div class="setup-container">
         <!--PLAYER-->
-        <div class="player-container">
-          <h2>Players</h2>
-          <div class="player_skill-container">
-            <div class="player">
-              <span class="material-icons removeIcon">
-                highlight_off
-              </span>
-              <input
-                type="text"
-                name="addPlayer"
-                id="addPlayer"
-                placeholder="Player"
-              />
-            </div>
-            <!--SKILL LEVELS-->
-            <div class="skill-container">
-              <span class="skill">1</span>
-              <span class="skill">2</span>
-              <span class="skill">3</span>
-              <span class="skill">4</span>
-              <span class="skill">5</span>
-            </div>
-          </div>
+        <div class="container">
+          <h1>Players</h1>
+          <ul id="playerUL"></ul>
 
-          <div class="player_skill-container">
-            <div class="player">
-              <span class="material-icons removeIcon">
-                highlight_off
-              </span>
-              <input
-                type="text"
-                name="addPlayer"
-                id="addPlayer"
-                placeholder="Player"
-              />
-            </div>
-            <div class="skill-container">
-              <span class="skill">1</span>
-              <span class="skill">2</span>
-              <span class="skill">3</span>
-              <span class="skill">4</span>
-              <span class="skill">5</span>
-            </div>
-          </div>
           <!--ADD PLAYER-->
-          <span class="material-icons button shadow">
+          <span
+            onclick="newPlayer()"
+            id="addPlayer"
+            class="material-icons button shadow"
+          >
             add
           </span>
         </div>
-        <!--TEAMS-->
-        <div class="team-container">
-          <h2>Teams</h2>
-          <div class="teams">
-            <span class="material-icons removeIcon">
-              highlight_off
-            </span>
-            <input
-              type="text"
-              name="addPlayer"
-              id="addPlayer"
-              placeholder="Team"
-            />
-          </div>
-          <!--ADD TEAM-->
-          <span class="material-icons button shadow">
+        <!--PLAYER-->
+        <div class="container">
+          <h1>Teams</h1>
+          <ul id="teamUL"></ul>
+
+          <!--ADD PLAYER-->
+          <span
+            onclick="newTeam()"
+            id="addTeam"
+            class="material-icons button shadow"
+          >
             add
           </span>
         </div>
       </div>
       <!--START BUTTON-->
-      <div class="start">
-        <input class="button shadow" type="button" value="Randomize" />
-      </div>
+      <span class="start button shadow">Randomize</span>
     </div>
 
     <script src="script.js" type="text/javascript"></script>
