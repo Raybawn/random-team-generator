@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 $primary-color: rgb(191, 255, 0);
-$transition: ease-in-out 0.4s;
-$shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-$hover-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.5);
+$transition: ease-in-out 0.2s;
+$shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+//$hover-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.5);
+$hover-button: rgb(113, 151, 0);
 $font-color-dark: #eee;
 $btn-font-color-dark: rgb(25, 25, 27);
 $background-color-dark: rgb(25, 25, 27);
@@ -61,7 +62,13 @@ ul {
 }
 
 ::placeholder {
-  color: $font-color-dark;
+  font-size: 17px;
+}
+
+.neumorphism {
+  border-radius: 24px;
+  background: #19191b;
+  box-shadow: 5px 5px 9px #101012, -5px -5px 9px #222224;
 }
 
 .content {
@@ -82,15 +89,7 @@ ul {
 .container {
   margin: 10px 20px;
   text-align: center;
-  min-width: 230px;
-}
-
-.setup-container input {
-  padding: 0.2em;
-  background-color: $background-color-dark;
-  box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.3);
-  color: $font-color-dark;
-  margin-right: 6px;
+  min-width: 250px;
 }
 
 .setup-container h1 {
@@ -98,25 +97,75 @@ ul {
   margin: 1em;
 }
 
-/* Player */
-
-.player {
-  margin-bottom: 0.5em;
+.setup-container li {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 250px;
+  justify-content: start;
+  padding: 0.8em 0;
+  border-radius: 0.6em;
 }
+
+.textfield {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 200px;
+  padding: 0.3em;
+  background-color: $background-color-dark;
+  //box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.5);
+  box-shadow: inset 2px 2px 4px #101012, inset -2px -2px 4px #222224;
+  color: $font-color-dark;
+  border-radius: 0.2em;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 205px;
+  padding: 0.1em;
+  margin-top: 0.8em;
+  height: 20px;
+  border-radius: 15px;
+  background: $background-color-dark;
+  box-shadow: inset 2px 2px 4px #101012, inset -2px -2px 4px #222224;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: $primary-color;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: $primary-color;
+  cursor: pointer;
+}
+
+/* Player */
 
 .close {
   position: relative;
-  top: 6px;
+  left: 6px;
+  top: 1px;
+  color: darkred;
+  transition: $transition;
 }
 
 .close:hover {
   cursor: pointer;
+  color: red;
 }
 
 /* Buttons */
 
 .addButton {
-  margin-top: 1em;
   font-size: 1.2em;
 }
 
@@ -126,11 +175,12 @@ ul {
   padding: 0.5em;
   transition: $transition;
   color: $btn-font-color-dark;
+  margin-bottom: 1em;
 }
 
 .button:hover {
   cursor: pointer;
-  box-shadow: $hover-shadow;
+  background-color: $hover-button;
 }
 
 .shadow {
@@ -140,4 +190,8 @@ ul {
 .start {
   font-size: 1.3em;
   margin: 2rem;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

@@ -1,6 +1,4 @@
 let playerLI = document.getElementById("playerUL").getElementsByTagName("LI");
-let playerCount = 0;
-let teamCount = 0;
 
 // Create a "close" button and append it to each list item
 let myPlayerList = document.getElementsByTagName("LI");
@@ -21,33 +19,26 @@ for (j = 0; j < close.length; j++) {
     let div = this.parentElement;
     div.style.display = "none";
   };
-  // lowerCount();
 }
-
-/*
-function lowerCount(element) {
-  if (this.parentElement.parentElement.id === "playerUL") {
-    playerCount -= 1;
-  }
-}
-*/
 
 // Logic for playerlist
 // Create a new list item when clicking on the "+" button
 function newPlayer() {
-  playerCount += 1;
   let li = document.createElement("li");
+
   let input = document.createElement("input");
   input.type = "text";
   input.name = "addPlayer";
   input.id = "addPlayer";
-  input.placeholder = "Player " + [playerCount] + "...";
+  input.placeholder = "Player...";
+  input.className = "textfield";
+
   li.appendChild(input);
 
   document.getElementById("playerUL").appendChild(li);
 
   let span = document.createElement("SPAN");
-  let txt = document.createTextNode("highlight_off");
+  let txt = document.createTextNode("clear");
   span.className = "material-icons close";
   span.appendChild(txt);
   li.appendChild(span);
@@ -58,24 +49,35 @@ function newPlayer() {
       div.style.display = "none";
     };
   }
+
+  let range = document.createElement("input");
+  range.type = "range";
+  range.min = "1";
+  range.max = "5";
+  range.value = "1";
+  range.id = "addSkill";
+  range.className = "slider";
+
+  li.appendChild(range);
 }
 
 // Logic for teamlist
 // Create a new list item when clicking on the "+" button
 function newTeam() {
-  teamCount += 1;
   let li = document.createElement("li");
+
   let input = document.createElement("input");
   input.type = "text";
   input.name = "addTeam";
   input.id = "addTeam";
-  input.placeholder = "Team " + [teamCount] + "...";
+  input.placeholder = "Team...";
+  input.className = "textfield";
   li.appendChild(input);
 
   document.getElementById("teamUL").appendChild(li);
 
   let span = document.createElement("SPAN");
-  let txt = document.createTextNode("highlight_off");
+  let txt = document.createTextNode("clear");
   span.className = "material-icons close";
   span.appendChild(txt);
   li.appendChild(span);
