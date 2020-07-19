@@ -1,12 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/*
+$secondary-color-dark: rgb(191, 255, 0);
+$secondary-color-light: rgb(255, 92, 0);
 
-$primary-color: rgb(191, 255, 0);
-$transition: ease-in-out 0.4s;
-$shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-$hover-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.5);
-$font-color-dark: #eee;
-$btn-font-color-dark: rgb(25, 25, 27);
-$background-color-dark: rgb(25, 25, 27);
+$border-dark-100: rgb(0, 0, 0);
+$border-dark-25: rgb(0, 0, 0, 0.25);
+
+$transition: ease-in-out 0.2s;
+$shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+*/
+
+:root {
+  --bg-color: rgb(25, 25, 29);
+  --color-dark: rgb(25, 25, 29);
+  --color-light: rgb(229, 229, 229);
+
+  --border-dark-100: rgb(0, 0, 0);
+  --border-dark-25: rgb(0, 0, 0, 0.25);
+
+  --border-dark-100: rgb(229, 229, 229);
+  --border-dark-25: rgb(229, 229, 229, 0.25);
+}
 
 * {
   margin: 0;
@@ -15,6 +29,7 @@ $background-color-dark: rgb(25, 25, 27);
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -33,9 +48,13 @@ section {
 body {
   line-height: 1;
   font-family: "Roboto", sans-serif;
-  color: $font-color-dark;
-  background-color: $background-color-dark;
+  color: var(--color-light);
+  background-color: var(--bg-color);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
+
 ol,
 ul {
   list-style: none;
@@ -56,14 +75,6 @@ table {
   border-spacing: 0;
 }
 
-ul {
-  margin-bottom: 1.5rem;
-}
-
-::placeholder {
-  color: $font-color-dark;
-}
-
 .content {
   display: flex;
   flex-flow: column nowrap;
@@ -71,73 +82,137 @@ ul {
 }
 
 /* Setup */
-
 .setup-container {
   display: flex;
   flex-flow: row wrap;
-  margin: auto;
   justify-content: center;
 }
 
 .container {
   margin: 10px 20px;
   text-align: center;
-  min-width: 230px;
-}
-
-.setup-container input {
-  padding: 0.2em;
-  background-color: $background-color-dark;
-  box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.3);
-  color: $font-color-dark;
-  margin-right: 6px;
+  min-width: 250px;
+  justify-content: center;
 }
 
 .setup-container h1 {
   font-size: 1.5em;
-  margin: 1em;
+  margin: 20px;
+}
+
+.setup-container li {
+  width: 250px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid $border-dark-25;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+#playerUL li {
+  height: 80px;
+}
+
+#teamUL li {
+  height: 50px;
+}
+
+.textfield {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 215px;
+  height: 30px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  border-radius: 4px;
+  border: 1px solid $border-dark-25;
+  padding-left: 5px;
 }
 
 /* Player */
-
-.player {
-  margin-bottom: 0.5em;
+.slider {
+  -webkit-appearance: none;
+  width: 215px;
+  height: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  background-color: var(--color-dark);
+  border: 1px solid $border-dark-25;
+  outline: none;
 }
 
-.close {
-  position: relative;
-  top: 6px;
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-style: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: $secondary-color-dark;
+  cursor: pointer;
 }
 
-.close:hover {
+.slider::-moz-range-thumb {
+  border-style: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: $secondary-color-dark;
   cursor: pointer;
 }
 
 /* Buttons */
+.close {
+  color: $border-dark-100;
+  transition: $transition;
+  float: right;
+  left: 10px;
+  bottom: 10px;
+}
 
-.addButton {
-  margin-top: 1em;
-  font-size: 1.2em;
+.close:hover {
+  cursor: pointer;
+  color: red;
+}
+
+#styleButton {
+  font-size: 24px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--color-light);
+  border: 2px solid var(--color-light);
+  border-radius: 50%;
+  padding: 10px;
+  transition: $transition;
+}
+
+#styleButton:hover {
+  cursor: pointer;
+  color: var(--color-dark);
+  background-color: var(--color-light);
 }
 
 .button {
-  border-radius: 0.2em;
-  background-color: $primary-color;
-  padding: 0.5em;
+  color: $secondary-color-dark;
+  border: 2px solid $secondary-color-dark;
+  border-radius: 4px;
+  padding: 0.4em;
+  margin-bottom: 20px;
   transition: $transition;
-  color: $btn-font-color-dark;
 }
 
 .button:hover {
   cursor: pointer;
-  box-shadow: $hover-shadow;
-}
-
-.shadow {
-  transition: $transition;
+  color: var(--color-dark);
+  background-color: $secondary-color-dark;
 }
 
 .start {
   font-size: 1.3em;
   margin: 2rem;
+}
+
+.card {
+  box-shadow: $shadow;
 }
