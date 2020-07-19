@@ -1,13 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/*
+$secondary-color-dark: rgb(191, 255, 0);
+$secondary-color-light: rgb(255, 92, 0);
 
-$primary-color: rgb(191, 255, 0);
+$border-dark-100: rgb(0, 0, 0);
+$border-dark-25: rgb(0, 0, 0, 0.25);
+
 $transition: ease-in-out 0.2s;
-$shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-//$hover-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.5);
-$hover-button: rgb(113, 151, 0);
-$font-color-dark: #eee;
-$btn-font-color-dark: rgb(25, 25, 27);
-$background-color-dark: rgb(25, 25, 27);
+$shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+*/
+
+:root {
+  --bg-color: rgb(25, 25, 29);
+  --color-dark: rgb(25, 25, 29);
+  --color-light: rgb(229, 229, 229);
+
+  --border-dark-100: rgb(0, 0, 0);
+  --border-dark-25: rgb(0, 0, 0, 0.25);
+
+  --border-dark-100: rgb(229, 229, 229);
+  --border-dark-25: rgb(229, 229, 229, 0.25);
+}
 
 * {
   margin: 0;
@@ -16,6 +29,7 @@ $background-color-dark: rgb(25, 25, 27);
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -34,9 +48,13 @@ section {
 body {
   line-height: 1;
   font-family: "Roboto", sans-serif;
-  color: $font-color-dark;
-  background-color: $background-color-dark;
+  color: var(--color-light);
+  background-color: var(--bg-color);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
+
 ol,
 ul {
   list-style: none;
@@ -57,20 +75,6 @@ table {
   border-spacing: 0;
 }
 
-ul {
-  margin-bottom: 1.5rem;
-}
-
-::placeholder {
-  font-size: 17px;
-}
-
-.neumorphism {
-  border-radius: 24px;
-  background: #19191b;
-  box-shadow: 5px 5px 9px #101012, -5px -5px 9px #222224;
-}
-
 .content {
   display: flex;
   flex-flow: column nowrap;
@@ -78,11 +82,9 @@ ul {
 }
 
 /* Setup */
-
 .setup-container {
   display: flex;
   flex-flow: row wrap;
-  margin: auto;
   justify-content: center;
 }
 
@@ -90,72 +92,82 @@ ul {
   margin: 10px 20px;
   text-align: center;
   min-width: 250px;
+  justify-content: center;
 }
 
 .setup-container h1 {
   font-size: 1.5em;
-  margin: 1em;
+  margin: 20px;
 }
 
 .setup-container li {
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 250px;
-  justify-content: start;
-  padding: 0.8em 0;
-  border-radius: 0.6em;
+  width: 250px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid $border-dark-25;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+#playerUL li {
+  height: 80px;
+}
+
+#teamUL li {
+  height: 50px;
 }
 
 .textfield {
   -webkit-appearance: none;
   appearance: none;
-  width: 200px;
-  padding: 0.3em;
-  background-color: $background-color-dark;
-  //box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.5);
-  box-shadow: inset 2px 2px 4px #101012, inset -2px -2px 4px #222224;
-  color: $font-color-dark;
-  border-radius: 0.2em;
+  width: 215px;
+  height: 30px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  border-radius: 4px;
+  border: 1px solid $border-dark-25;
+  padding-left: 5px;
 }
 
+/* Player */
 .slider {
   -webkit-appearance: none;
-  width: 205px;
-  padding: 0.1em;
-  margin-top: 0.8em;
+  width: 215px;
   height: 20px;
-  border-radius: 15px;
-  background: $background-color-dark;
-  box-shadow: inset 2px 2px 4px #101012, inset -2px -2px 4px #222224;
+  border-radius: 10px;
+  margin-top: 15px;
+  background-color: var(--color-dark);
+  border: 1px solid $border-dark-25;
   outline: none;
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  border-style: none;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: $primary-color;
+  background: $secondary-color-dark;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  border-style: none;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: $primary-color;
+  background: $secondary-color-dark;
   cursor: pointer;
 }
 
-/* Player */
-
+/* Buttons */
 .close {
-  position: relative;
-  left: 6px;
-  top: 1px;
-  color: darkred;
+  color: $border-dark-100;
   transition: $transition;
+  float: right;
+  left: 10px;
+  bottom: 10px;
 }
 
 .close:hover {
@@ -163,28 +175,37 @@ ul {
   color: red;
 }
 
-/* Buttons */
+#styleButton {
+  font-size: 24px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--color-light);
+  border: 2px solid var(--color-light);
+  border-radius: 50%;
+  padding: 10px;
+  transition: $transition;
+}
 
-.addButton {
-  font-size: 1.2em;
+#styleButton:hover {
+  cursor: pointer;
+  color: var(--color-dark);
+  background-color: var(--color-light);
 }
 
 .button {
-  border-radius: 0.2em;
-  background-color: $primary-color;
-  padding: 0.5em;
+  color: $secondary-color-dark;
+  border: 2px solid $secondary-color-dark;
+  border-radius: 4px;
+  padding: 0.4em;
+  margin-bottom: 20px;
   transition: $transition;
-  color: $btn-font-color-dark;
-  margin-bottom: 1em;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: $hover-button;
-}
-
-.shadow {
-  transition: $transition;
+  color: var(--color-dark);
+  background-color: $secondary-color-dark;
 }
 
 .start {
@@ -193,5 +214,5 @@ ul {
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
 }

@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+:root {
+  --bg-color: rgb(25, 25, 29);
+  --color-dark: rgb(25, 25, 29);
+  --color-light: rgb(229, 229, 229);
+  --border-dark-100: rgb(0, 0, 0);
+  --border-dark-25: rgb(0, 0, 0, 0.25);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +14,7 @@
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -26,8 +35,11 @@ section {
 body {
   line-height: 1;
   font-family: "Roboto", sans-serif;
-  color: #eee;
-  background-color: #19191b;
+  color: var(--color-light);
+  background-color: var(--bg-color);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 ol,
@@ -53,20 +65,6 @@ table {
   border-spacing: 0;
 }
 
-ul {
-  margin-bottom: 1.5rem;
-}
-
-::placeholder {
-  font-size: 17px;
-}
-
-.neumorphism {
-  border-radius: 24px;
-  background: #19191b;
-  box-shadow: 5px 5px 9px #101012, -5px -5px 9px #222224;
-}
-
 .content {
   display: flex;
   flex-flow: column nowrap;
@@ -77,7 +75,6 @@ ul {
 .setup-container {
   display: flex;
   flex-flow: row wrap;
-  margin: auto;
   justify-content: center;
 }
 
@@ -85,71 +82,83 @@ ul {
   margin: 10px 20px;
   text-align: center;
   min-width: 250px;
+  justify-content: center;
 }
 
 .setup-container h1 {
   font-size: 1.5em;
-  margin: 1em;
+  margin: 20px;
 }
 
 .setup-container li {
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 250px;
-  justify-content: start;
-  padding: 0.8em 0;
-  border-radius: 0.6em;
+  width: 250px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+#playerUL li {
+  height: 80px;
+}
+
+#teamUL li {
+  height: 50px;
 }
 
 .textfield {
   -webkit-appearance: none;
   -moz-appearance: none;
-       appearance: none;
-  width: 200px;
-  padding: 0.3em;
-  background-color: #19191b;
-  box-shadow: inset 2px 2px 4px #101012, inset -2px -2px 4px #222224;
-  color: #eee;
-  border-radius: 0.2em;
+  appearance: none;
+  width: 215px;
+  height: 30px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding-left: 5px;
 }
 
+/* Player */
 .slider {
   -webkit-appearance: none;
-  width: 205px;
-  padding: 0.1em;
-  margin-top: 0.8em;
+  width: 215px;
   height: 20px;
-  border-radius: 15px;
-  background: #19191b;
-  box-shadow: inset 2px 2px 4px #101012, inset -2px -2px 4px #222224;
+  border-radius: 10px;
+  margin-top: 15px;
+  background-color: var(--color-dark);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   outline: none;
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  border-style: none;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #bfff00;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  border-style: none;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #bfff00;
   cursor: pointer;
 }
 
-/* Player */
+/* Buttons */
 .close {
-  position: relative;
-  left: 6px;
-  top: 1px;
-  color: darkred;
+  color: black;
   transition: ease-in-out 0.2s;
+  float: right;
+  left: 10px;
+  bottom: 10px;
 }
 
 .close:hover {
@@ -157,27 +166,37 @@ ul {
   color: red;
 }
 
-/* Buttons */
-.addButton {
-  font-size: 1.2em;
+#styleButton {
+  font-size: 24px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--color-light);
+  border: 2px solid var(--color-light);
+  border-radius: 50%;
+  padding: 10px;
+  transition: ease-in-out 0.2s;
+}
+
+#styleButton:hover {
+  cursor: pointer;
+  color: var(--color-dark);
+  background-color: var(--color-light);
 }
 
 .button {
-  border-radius: 0.2em;
-  background-color: #bfff00;
-  padding: 0.5em;
+  color: #bfff00;
+  border: 2px solid #bfff00;
+  border-radius: 4px;
+  padding: 0.4em;
+  margin-bottom: 20px;
   transition: ease-in-out 0.2s;
-  color: #19191b;
-  margin-bottom: 1em;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: #719700;
-}
-
-.shadow {
-  transition: ease-in-out 0.2s;
+  color: var(--color-dark);
+  background-color: #bfff00;
 }
 
 .start {
@@ -186,5 +205,5 @@ ul {
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
