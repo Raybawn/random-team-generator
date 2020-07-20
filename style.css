@@ -154,7 +154,7 @@ table {
 
 /* Buttons */
 .close {
-  color: black;
+  color: darkred;
   transition: ease-in-out 0.2s;
   float: right;
   left: 10px;
