@@ -1,10 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/*
+$secondary-color-dark: rgb(191, 255, 0);
+$secondary-color-light: rgb(255, 92, 0);
+
+$border-dark-100: rgb(0, 0, 0);
+$border-dark-25: rgb(0, 0, 0, 0.25);
+
+$transition: ease-in-out 0.2s;
+$shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+*/
 :root {
-  --bg-color: rgb(25, 25, 29);
-  --color-dark: rgb(25, 25, 29);
-  --color-light: rgb(229, 229, 229);
-  --border-dark-100: rgb(0, 0, 0);
-  --border-dark-25: rgb(0, 0, 0, 0.25);
+  --color: rgb(25, 25, 29);
+  --color-txt: rgb(229, 229, 229);
+  --secondary-color: rgb(191, 255, 0);
+  --border: rgba(0, 0, 0, 0.5);
+  --transition: ease-in-out 0.2s;
+  --shadow: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -35,8 +46,8 @@ section {
 body {
   line-height: 1;
   font-family: "Roboto", sans-serif;
-  color: var(--color-light);
-  background-color: var(--bg-color);
+  color: var(--color-txt);
+  background-color: var(--color);
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -94,7 +105,6 @@ table {
   width: 250px;
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
   text-align: left;
   margin-bottom: 5px;
 }
@@ -107,16 +117,20 @@ table {
   height: 50px;
 }
 
+::placeholder {
+  position: relative;
+  top: 2px;
+}
+
 .textfield {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
+       appearance: none;
   width: 215px;
   height: 30px;
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  background-color: var(--color);
+  color: var(--color-txt);
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
   padding-left: 5px;
 }
 
@@ -127,8 +141,7 @@ table {
   height: 20px;
   border-radius: 10px;
   margin-top: 15px;
-  background-color: var(--color-dark);
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  background-color: var(--shadow);
   outline: none;
 }
 
@@ -139,7 +152,7 @@ table {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #bfff00;
+  background: var(--secondary-color);
   cursor: pointer;
 }
 
@@ -148,14 +161,14 @@ table {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #bfff00;
+  background: var(--secondary-color);
   cursor: pointer;
 }
 
 /* Buttons */
 .close {
-  color: black;
-  transition: ease-in-out 0.2s;
+  color: red;
+  transition: var(--transition);
   float: right;
   left: 10px;
   bottom: 10px;
@@ -163,7 +176,6 @@ table {
 
 .close:hover {
   cursor: pointer;
-  color: red;
 }
 
 #styleButton {
@@ -171,32 +183,32 @@ table {
   position: absolute;
   top: 20px;
   right: 20px;
-  color: var(--color-light);
-  border: 2px solid var(--color-light);
+  color: var(--color-txt);
+  border: 2px solid var(--color-txt);
   border-radius: 50%;
   padding: 10px;
-  transition: ease-in-out 0.2s;
+  transition: var(--transition);
 }
 
 #styleButton:hover {
   cursor: pointer;
-  color: var(--color-dark);
-  background-color: var(--color-light);
+  color: var(--color);
+  background-color: var(--color-txt);
 }
 
 .button {
-  color: #bfff00;
-  border: 2px solid #bfff00;
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 4px;
   padding: 0.4em;
   margin-bottom: 20px;
-  transition: ease-in-out 0.2s;
+  transition: var(--transition);
 }
 
 .button:hover {
   cursor: pointer;
-  color: var(--color-dark);
-  background-color: #bfff00;
+  color: var(--color);
+  background-color: var(--secondary-color);
 }
 
 .start {
@@ -205,5 +217,5 @@ table {
 }
 
 .card {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px var(--shadow);
 }

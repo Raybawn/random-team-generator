@@ -96,3 +96,43 @@ function newTeam() {
     };
   }
 }
+
+// Change between Dark and Light mode
+const toggleMode = () => {
+  let root = document.querySelector(":root");
+  let background = getComputedStyle(root).getPropertyValue("--color");
+  let text = getComputedStyle(root).getPropertyValue("--color-txt");
+  let secondary = getComputedStyle(root).getPropertyValue("--secondary-color");
+  let border = getComputedStyle(root).getPropertyPriority("--border");
+  let shadow = getComputedStyle(root).getPropertyValue("--shadow");
+
+  if (background === "rgb(25, 25, 29)") {
+    root.style.setProperty("--color", "rgb(229, 229, 229)");
+  } else {
+    root.style.setProperty("--color", "rgb(25, 25, 29)");
+  }
+
+  if (text === "rgb(229, 229, 229)") {
+    root.style.setProperty("--color-txt", "rgb(25, 25, 29)");
+  } else {
+    root.style.setProperty("--color-txt", "rgb(229, 229, 229)");
+  }
+
+  if (secondary === "rgb(191, 255, 0)") {
+    root.style.setProperty("--secondary-color", "rgb(255, 92, 0)");
+  } else {
+    root.style.setProperty("--secondary-color", "rgb(191, 255, 0)");
+  }
+
+  if (shadow === "rgba(0, 0, 0, 0.5)") {
+    root.style.setProperty("--shadow", "rgba(0, 0, 0, 0.15)");
+  } else {
+    root.style.setProperty("--shadow", "rgba(0, 0, 0, 0.5)");
+  }
+
+  if (border === "rgba(0, 0, 0, 0.5)") {
+    root.style.setProperty("--border", "rgba(255, 255, 255, 0.5)");
+  } else {
+    root.style.setProperty("--border", "rgba(0, 0, 0, 0.5)");
+  }
+};
