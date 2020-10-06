@@ -3,50 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Teams</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <script src="./script.js"></script>
+    <title>Randomizer</title>
   </head>
-  <body>
-    <span onclick="toggleMode()" id="styleButton" class="material-icons">
-      emoji_objects
-    </span>
-    <div class="content">
-      <div class="setup-container">
-        <!--PLAYER-->
-        <div class="container">
-          <h1>Players</h1>
-          <!--ADD PLAYER-->
-          <span
-            onclick="newPlayer()"
-            id="addPlayer"
-            class="material-icons button shadow"
-          >
-            add
-          </span>
-          <ul id="playerUL"></ul>
-        </div>
-        <!--TEAMS-->
-        <div class="container">
-          <h1>Teams</h1>
-          <!--ADD PLAYER-->
-          <span
-            onclick="newTeam()"
-            id="addTeam"
-            class="material-icons button shadow"
-          >
-            add
-          </span>
-          <ul id="teamUL"></ul>
-        </div>
-      </div>
-      <!--START BUTTON-->
-      <span class="start button shadow">Randomize</span>
-    </div>
+  <body onload="onStart();">
+    
+    <div>
+      <!-- Form with textfield for the playernames and skilllevel (will be added). -->
+      <form onsubmit="return addPlayer()" id="playerForm">
+        <input type="text" name="player" id="player" placeholder="Playername" maxlength="10" required autofocus/>
+        <input
+          type="range"
+          min="1"
+          max="5"
+          name="skill"
+          id="skill"
+          value="1"
+        />
+      </form>
 
-    <script src="script.js" type="text/javascript"></script>
+      <form onsubmit="return false">
+        <label for="numberOfTeams">Teams:</label>
+        <input
+          type="number"
+          min="1"
+          max="10"
+          name="numberOfTeams"
+          id="numberOfTeams"
+          value="1"
+        />
+      </form>
+
+        <!-- Button to create the teams. -->
+        <button type="button" onclick="randomTeams()">Random</button>
+        <button type="button" onclick="balancedTeams()">Balanced</button>
+    </div>
+    
+    <div>
+      <!-- Playerlist. -->
+      <h3>Players:</h3>
+      <p><ol id=playerList class="list"></ol></p>
+      <!-- Teamlist. -->
+      <h3>Teams:</h3>
+      <p><ol id=teamList class="list"></ol></p>
+    </div>
   </body>
 </html>
