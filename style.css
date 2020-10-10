@@ -1,22 +1,91 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-:root {
-  --bg-color: rgb(25, 25, 29);
-  --color-dark: rgb(25, 25, 29);
-  --color-light: rgb(229, 229, 229);
-  --border-dark-100: rgb(0, 0, 0);
-  --border-dark-25: rgb(0, 0, 0, 0.25);
-}
-
-* {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  box-sizing: border-box;
 }
-
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -31,27 +100,17 @@ nav,
 section {
   display: block;
 }
-
 body {
   line-height: 1;
-  font-family: "Roboto", sans-serif;
-  color: var(--color-light);
-  background-color: var(--bg-color);
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
-
 ol,
 ul {
   list-style: none;
 }
-
 blockquote,
 q {
   quotes: none;
 }
-
 blockquote:before,
 blockquote:after,
 q:before,
@@ -59,151 +118,297 @@ q:after {
   content: "";
   content: none;
 }
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-.content {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-
-/* Setup */
-.setup-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-
-.container {
-  margin: 10px 20px;
-  text-align: center;
-  min-width: 250px;
-  justify-content: center;
-}
-
-.setup-container h1 {
-  font-size: 1.5em;
-  margin: 20px;
-}
-
-.setup-container li {
-  width: 250px;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  text-align: left;
-  margin-bottom: 5px;
-}
-
-#playerUL li {
-  height: 80px;
-}
-
-#teamUL li {
-  height: 50px;
-}
-
-.textfield {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 215px;
-  height: 30px;
-  background-color: var(--color-dark);
-  color: var(--color-light);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  padding-left: 5px;
-}
-
-/* Player */
-.slider {
-  -webkit-appearance: none;
-  width: 215px;
-  height: 20px;
-  border-radius: 10px;
-  margin-top: 15px;
-  background-color: var(--color-dark);
-  border: 1px solid rgba(0, 0, 0, 0.25);
+*:focus {
   outline: none;
 }
 
-.slider::-webkit-slider-thumb {
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  appearance: none;
-  border-style: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #bfff00;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+button {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
   cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.slider::-moz-range-thumb {
-  border-style: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #bfff00;
-  cursor: pointer;
+button:active {
+  transform: scale(0.99);
 }
 
-/* Buttons */
-.close {
-  color: darkred;
-  transition: ease-in-out 0.2s;
-  float: right;
-  left: 10px;
-  bottom: 10px;
+/*
+^^^   RESET CSS   ^^^
+*/
+
+html,
+body {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
-.close:hover {
-  cursor: pointer;
-  color: red;
+* {
+  box-sizing: border-box;
 }
 
-#styleButton {
-  font-size: 24px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--color-light);
-  border: 2px solid var(--color-light);
-  border-radius: 50%;
+.flex-container {
+  display: inline-flex;
+  flex-flow: row wrap;
+  width: 100%;
   padding: 10px;
-  transition: ease-in-out 0.2s;
+  min-height: 100px;
 }
 
-#styleButton:hover {
-  cursor: pointer;
-  color: var(--color-dark);
-  background-color: var(--color-light);
+.flex-container .block {
+  margin: 5px 5px;
+  width: 250px;
+}
+
+.center {
+  align-content: center;
+  justify-content: center;
+}
+
+.textfield {
+  background-color: #0099ff;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .button {
-  color: #bfff00;
-  border: 2px solid #bfff00;
-  border-radius: 4px;
-  padding: 0.4em;
-  margin-bottom: 20px;
-  transition: ease-in-out 0.2s;
+  font-weight: 800;
+  color: #ffffff;
+  background-color: #0099ff;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  overflow: visible;
+  box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.2);
 }
 
 .button:hover {
+  background-color: #0073c0;
   cursor: pointer;
-  color: var(--color-dark);
-  background-color: #bfff00;
 }
 
-.start {
-  font-size: 1.3em;
-  margin: 2rem;
+.button:active {
+  background-color: #00568f;
 }
 
-.card {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+.create button {
+  height: 50px;
+  width: 120px;
+}
+
+.create {
+  width: 250px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.block {
+  text-align: center;
+  height: 70px;
+}
+
+.block label {
+  justify-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+  bottom: 3px;
+}
+
+.block input {
+  width: 100%;
+  height: 50px;
+}
+
+#numberOfTeams {
+  width: 140px;
+  text-align: center;
+  justify-content: center;
+}
+
+.teamsForm {
+  width: 250px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.form {
+  width: 50px;
+  height: 50px;
+}
+
+input {
+  border-radius: 10px;
+  border-style: none;
+  background-color: #ebebeb;
+  font-size: 1.3rem;
+}
+
+input::placeholder {
+  color: #aaaaaa;
+}
+
+input:focus {
+  border: 2px solid #0099ff;
+}
+
+input[type="text"] {
+  padding-left: 1rem;
+}
+
+input[type="range"] {
+  position: relative;
+  top: 12.5px;
+  -webkit-appearance: none;
+  width: 98%;
+  height: 20px;
+  border-radius: 10px;
+  background: #ebebeb;
+  border: 1px solid white;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0099ff;
+  cursor: pointer;
+  box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0099ff;
+  cursor: pointer;
+  box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Player and Teamlists */
+#list-container {
+  margin: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  width: 80%;
+  max-width: 1000px;
+  min-width: 400px;
+  justify-content: space-evenly;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.list {
+  margin: 0.3rem;
+}
+
+.listItem {
+  margin-bottom: 1rem;
+}
+
+.liststyle {
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 1.3rem;
+  align-items: center;
+  display: inline-flex;
+}
+
+.skill {
+  width: 50px;
+  height: 50px;
+  background-color: #34c47c;
+  color: #ffffff;
+}
+
+.number {
+  flex-grow: 1;
+  height: 50px;
+  margin-bottom: 0.3rem;
+  margin-right: auto;
+  background-color: #ebebeb;
+}
+
+.name {
+  height: 50px;
+  width: 210px;
+  padding-left: 1rem;
+  background-color: #ebebeb;
+  justify-content: flex-start;
+}
+
+.delete {
+  height: 50px;
+  width: 50px;
+  background-color: #ff5151;
+  color: #ffffff;
+  overflow: visible;
+  box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.2);
+}
+
+.delete:hover {
+  background-color: #dd2929;
+  cursor: pointer;
+}
+
+.delete:active {
+  background-color: #c01919;
+}
+
+.team {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 210px;
+  min-height: 50px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #ebebeb;
+  line-height: 2rem;
+  justify-content: flex-start;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+}
+
+.teamskills {
+  margin-left: 0.3rem;
 }

@@ -1,12 +1,4 @@
-let players = [
-  { name: "Alpha", skill: 5 },
-  { name: "Beta", skill: 5 },
-  { name: "Gamma", skill: 5 },
-  { name: "Delta", skill: 1 },
-  { name: "Charlie", skill: 2 },
-  { name: "Omega", skill: 1 },
-  { name: "Hotel", skill: 1 },
-];
+let players = [];
 
 const onStart = () => {
   displayList(players, "playerList");
@@ -27,6 +19,30 @@ const addPlayer = () => {
   displayList(players, "playerList");
 
   // Don't reload the page on submit.
+  return false;
+};
+
+// Add one to the number of teams.
+const addNumberOfTeams = () => {
+  let currentNumberOfTeams = Number(
+    document.getElementById("numberOfTeams").value
+  );
+  if (currentNumberOfTeams !== 10) {
+    currentNumberOfTeams += 1;
+    document.getElementById("numberOfTeams").value = currentNumberOfTeams;
+  }
+  return false;
+};
+
+// Subtract one from the number of teams.
+const subNumberOfTeams = () => {
+  let currentNumberOfTeams = Number(
+    document.getElementById("numberOfTeams").value
+  );
+  if (currentNumberOfTeams !== 1) {
+    currentNumberOfTeams -= 1;
+    document.getElementById("numberOfTeams").value = currentNumberOfTeams;
+  }
   return false;
 };
 
@@ -99,25 +115,41 @@ const balancedTeams = () => {
 
 // Function to display a list of the players and teams.
 const displayList = (arr, list) => {
+  let i = 1;
   let result = "";
   if (arr === players) {
     arr.forEach(function (item) {
-      result += `<div class="listItem"><li> <span class="name">${item.name}</span> - <span class="skill">${item.skill}</span></li> <button id="${item.name}" onclick="deletePlayer('${item.name}')">X</button></div>`;
+      result += `<div class="listItem">
+        <li>
+          <span class="skill liststyle">${item.skill}</span>
+          <span class="name liststyle">${item.name}</span>
+          <button class="delete liststyle" id="${item.name}" onclick="deletePlayer('${item.name}')">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </li>
+      </div>`;
     });
   } else {
     arr.forEach(function (item) {
-      i = 0;
-      element = "";
+      elementS = [];
+      elementP = "";
       item.forEach(function (object) {
         if (object.teamSkill) {
-          element += object.teamSkill + " - ";
+          elementS += `<span class="skill green teamskills liststyle"> ${object.teamSkill} </span>`;
           // return false;
         } else {
-          element += object.name + ", ";
-          return element;
+          elementP += `<span class="name liststyle">${object.name}</span>`;
         }
       });
-      result += `<div class="listItem"><li> ${element} </li></div>`;
+      result += `<div class="listItem teams">
+        <li>
+          <div class="row">
+            <span class="number liststyle"> ${i} </span>
+            ${elementS}
+          </div>
+          <div class="team liststyle"> ${elementP} </div> 
+        </li>
+      </div>`;
       i++;
     });
   }
@@ -138,6 +170,8 @@ const deletePlayer = (id) => {
 
   // Remove object from the list.
   object.parentNode.remove();
+
+  displayList(players, "playerList");
 };
 
 // Split shuffled player array into set sized teams.

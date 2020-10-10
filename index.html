@@ -3,49 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c7e4c21339.js" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
-    <title>Randomizer</title>
+    <title>Alex - Teambuilder</title>
   </head>
-  <body onload="onStart();">
+  <body onload="onStart();" class="center">
     
-    <div>
+    <div class="flex-container center">
       <!-- Form with textfield for the playernames and skilllevel (will be added). -->
-      <form onsubmit="return addPlayer()" id="playerForm">
-        <input type="text" name="player" id="player" placeholder="Playername" maxlength="10" required autofocus/>
-        <input
-          type="range"
-          min="1"
-          max="5"
-          name="skill"
-          id="skill"
-          value="1"
-        />
+      <form onsubmit="return addPlayer()" class="wrap">
+        <div class="block center">
+          <label for="player">Player</label>
+          <input 
+            type="text" 
+            name="player" 
+            id="player" 
+            placeholder="Playername" 
+            maxlength="10" 
+            required 
+            autofocus
+          />
+        </div>
       </form>
 
       <form onsubmit="return false">
-        <label for="numberOfTeams">Teams:</label>
-        <input
-          type="number"
-          min="1"
-          max="10"
-          name="numberOfTeams"
-          id="numberOfTeams"
-          value="1"
-        />
+        <div class="block center">
+          <label for="skill">Skill</label>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            name="skill"
+            id="skill"
+            class="slider"
+            value="1"
+          />
+        </div>
       </form>
 
+      <form onsubmit="return false">
+        <div class="block center">
+          <label for="numberOfTeams">Teams</label>
+          <div class="teamsForm"> 
+            <button class="form button" type="button" onclick="subNumberOfTeams()"><i class="fas fa-minus"></i></button>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              name="numberOfTeams"
+              id="numberOfTeams"
+              value="1"
+            />
+            <button class="form button" type="button" onclick="addNumberOfTeams()"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </form>
+
+      <div class="block center">
+        <label>Create</label>
         <!-- Button to create the teams. -->
-        <button type="button" onclick="randomTeams()">Random</button>
-        <button type="button" onclick="balancedTeams()">Balanced</button>
+        <div class="create nowrap">
+          <button class="button" type="button" onclick="randomTeams()">Random</button>
+          <button class="button" type="button" onclick="balancedTeams()">Balanced</button>
+        </div>
+      </div>
     </div>
     
-    <div>
+    <div id="list-container">
       <!-- Playerlist. -->
-      <h3>Players:</h3>
-      <p><ol id=playerList class="list"></ol></p>
+      <div class="list">
+        <h3>Players</h3>
+        <p><ol id=playerList class="list"></ol></p>
+      </div>
+      
       <!-- Teamlist. -->
-      <h3>Teams:</h3>
-      <p><ol id=teamList class="list"></ol></p>
+      <div class="list">
+        <h3>Teams</h3>
+        <p><ol id=teamList class="list"></ol></p>
+      </div>
     </div>
   </body>
 </html>
