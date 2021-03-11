@@ -412,3 +412,16 @@ h3 {
 .teamskills {
   margin-left: 0.3rem;
 }
+
+#submit {
+  height: 50px;
+  width: 250px;
+}
+
+#pList {
+  display: none;
+}
+
+#tList {
+  display: none;
+}

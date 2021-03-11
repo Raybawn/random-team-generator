@@ -1,26 +1,47 @@
 let players = [];
 
 const onStart = () => {
+  hidepList(players);
   displayList(players, "playerList");
 };
 
 // Add new Player to the array.
 const addPlayer = () => {
-  const newPlayer = {
-    name: document.getElementById("player").value,
-    skill: Number(document.getElementById("skill").value),
-  };
+  // Check if playername is empty.
+  if (document.getElementById("player").value === "") {
+    // Set focus on textfield.
+    document.getElementById("player").focus();
+    return false;
+  } else {
+    const newPlayer = {
+      name: document.getElementById("player").value,
+      skill: Number(document.getElementById("skill").value),
+    };
 
-  players.push(newPlayer);
-  document.getElementById("player").value = "";
-  document.getElementById("skill").value = 1;
+    players.push(newPlayer);
+    document.getElementById("player").value = "";
+    document.getElementById("skill").value = 1;
 
-  // Display a list of players.
-  displayList(players, "playerList");
+    // Hide list if no players are there to display.
+    hidepList();
 
-  // Don't reload the page on submit.
-  return false;
+    // Display a list of players.
+    displayList(players, "playerList");
+
+    document.getElementById("player").focus();
+
+    // Don't reload the page on submit.
+    return false;
+  }
 };
+
+// Allow enter key to submit a new player everywhere on the page.
+document.addEventListener("keypress", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("submit").click();
+  }
+});
 
 // Add one to the number of teams.
 const addNumberOfTeams = () => {
@@ -105,9 +126,11 @@ const balancedTeams = () => {
     );
   }
 
+  // Hide list if no teams are there to display.
+  hidetList(teams);
+
   // Display a list of the teams.
   displayList(teams, "teamList");
-  console.log(teams);
 
   // Reset the teams array.
   teams = [];
@@ -190,9 +213,34 @@ const randomTeams = () => {
     toShuffle = toShuffle.slice(teamSize);
   }
 
+  // Hide list if no teams are there to display.
+  hidetList(teams);
+
   // Display a list of the teams.
   displayList(teams, "teamList");
 
   // Reset the teams array.
   teams = [];
+};
+
+/* Work in progress */
+// Check if there are players to display, if not, hide the list element.
+const hidepList = (players) => {
+  let pList = document.getElementById("pList");
+
+  if (players) {
+    pList.style.display = "none";
+  } else {
+    pList.style.display = "block";
+  }
+};
+
+// Check if there are teams to display, if not, hide the list element.
+const hidetList = (teams) => {
+  let tList = document.getElementById("tList");
+  if (teams !== 0) {
+    tList.style.display = "block";
+  } else if (teams === 0) {
+    tList.style.display = "none";
+  }
 };

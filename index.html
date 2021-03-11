@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c7e4c21339.js" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
-    <title>Alex - Teambuilder</title>
+    <title>Teambuilder</title>
   </head>
   <body onload="onStart();" class="center">
     
@@ -15,13 +15,13 @@
       <!-- Form with textfield for the playernames and skilllevel (will be added). -->
       <form onsubmit="return addPlayer()" class="wrap">
         <div class="block center">
-          <label for="player">Player</label>
+          <label for="player">Playername</label>
           <input 
             type="text" 
             name="player" 
             id="player" 
             placeholder="Playername" 
-            maxlength="10" 
+            maxlength="15" 
             required 
             autofocus
           />
@@ -43,6 +43,14 @@
         </div>
       </form>
 
+      <div class="block center">
+        <label>Submit</label>
+        <!-- Button to create the teams. -->
+        <div>
+          <button id="submit" class="button" type="button" onclick="return addPlayer()">Add player</button>
+        </div>
+      </div>
+
       <form onsubmit="return false">
         <div class="block center">
           <label for="numberOfTeams">Teams</label>
@@ -51,7 +59,7 @@
             <input
               type="number"
               min="1"
-              max="10"
+              max="99"
               name="numberOfTeams"
               id="numberOfTeams"
               value="1"
@@ -73,13 +81,13 @@
     
     <div id="list-container">
       <!-- Playerlist. -->
-      <div class="list">
+      <div id="pList" class="list">
         <h3>Players</h3>
         <p><ol id=playerList class="list"></ol></p>
       </div>
       
       <!-- Teamlist. -->
-      <div class="list">
+      <div id="tList" class="list">
         <h3>Teams</h3>
         <p><ol id=teamList class="list"></ol></p>
       </div>
