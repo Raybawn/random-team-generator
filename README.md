@@ -4,7 +4,6 @@
 
 A simple, easy to use, webbased team generator.
 It allows to build totally random or skill based (but still kinda random) teams.
-You then will be able to export your generated teams as a JSON file.
 
 ## Why?
 
